@@ -1,6 +1,12 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objs as go
+import polars as pl
+from streamlit_extras.dataframe_explorer import dataframe_explorer
+#from streamlit_pandas_profiling import st_profile_report
+from streamlit.elements import spinner
+
+
 
 
 st.set_page_config(page_title="Estimación del rezago habitacional utilizando imágenes satelitales", page_icon=":house:")
@@ -13,10 +19,9 @@ st.image("https://centrourbano.com/revista/wp-content/uploads/Dia-Nacional-de-la
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Qué es el rezago habitacional?</p>", unsafe_allow_html=True)
 
 #Añadir mapa de folium
-
-st.write("El rezago habitacional es la diferencia entre la vivienda que se necesita y la que se tiene. Se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la vivienda, el acceso a servicios básicos y la seguridad de la vivienda. El rezago habitacional se mide en términos de la calidad de la ")
-
+st.markdown("<p style='font-family: Montserrat; font-size: 15px; text-align: justified'>El rezago habitacional es una metodología desarrollada por la Comisión Nacional de Vivienda, la cual está basada en los tipos de materiales utilizados para la construcción y de los espacios que los habitantes de éstas ocupan.</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se mide el rezago habitacional?</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Para la cuantificación del rezago, se consideran las siguientes variables y condiciones:</p>", unsafe_allow_html=True)
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
 
 
@@ -74,8 +79,40 @@ if option== 'Fuentes de información':
     f"</div>",
     unsafe_allow_html=True)
 
+#Base de datos
+st.markdown("---")
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre la base de datos</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se calcula utilizando la Encuesta Nacional de Ingresos y Gastos de los Hogares y se puede utilizar la muestra del cuestionario ampliado del Censo para obtener resultados a nivel municipal.</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>No obstante se utilizará la información a nivel manzana para aproximar una medición similar de carencias. La información de viviendas se transformó a porcentajes para poder comparar.</p>", unsafe_allow_html=True)
 
+st.markdown("---")
 
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estructura de la base limpia: </p>", unsafe_allow_html=True)
+
+#Leer base de datos
+df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
+
+row_count = "{:,}".format(df.shape[0])
+col_count = "{:,}".format(df.shape[1])
+st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>La base de datos tiene las siguientes características</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Observaciones: {row_count}</p>", unsafe_allow_html=True)
+st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Variables: {col_count}</p>", unsafe_allow_html=True)
+#Tabla con 10 registros
+
+st.dataframe(df.head(10).to_pandas())
+
+#Filtro por variable para obtener estadísticas descriptivas pandas pro
+st.markdown("---")
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Estadísticas descriptivas de la base limpia</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Selecciona una variable para obtener sus estadísticas descriptivas</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Recuerda que la tabla puede tardar un poco debido a la cantidad de información a procesar. Te pedimos paciencia 😊</p>", unsafe_allow_html=True)
+#Filtro por variable
+variable = st.selectbox(
+    'Selecciona una variable',
+    df.columns)
+
+st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
+st.dataframe(df[variable].describe().to_pandas())
 
 
 #Mapa
@@ -126,3 +163,5 @@ left_info_col.markdown(
         """,
         unsafe_allow_html=True,
     )
+
+
