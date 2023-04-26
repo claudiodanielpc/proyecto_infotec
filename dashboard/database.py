@@ -26,6 +26,8 @@ def show_data_preview(df):
     """
     st.dataframe(df.head(10).to_pandas())
 
+
+
 def show_variable_stats(df):
     """
     Display descriptive statistics for a selected variable from the loaded DataFrame
