@@ -6,6 +6,7 @@ import polars as pl
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
+import database
 
 
 
@@ -161,31 +162,43 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.markdown("---")
 
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estructura de la base limpia: </p>", unsafe_allow_html=True)
+# Load data
+df = database.load_data()
 
-#Leer base de datos
-df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
+# Show basic data info
+database.show_data_info(df)
 
-row_count = "{:,}".format(df.shape[0])
-col_count = "{:,}".format(df.shape[1])
-st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>La base de datos tiene las siguientes características</p>", unsafe_allow_html=True)
-st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Observaciones: {row_count}</p>", unsafe_allow_html=True)
-st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Variables: {col_count}</p>", unsafe_allow_html=True)
-#Tabla con 10 registros
+# Show data preview
+database.show_data_preview(df)
 
-st.dataframe(df.head(10).to_pandas())
+# Show variable statistics
+database.show_variable_stats(df)
 
-#Filtro por variable para obtener estadísticas descriptivas pandas pro
-st.markdown("---")
-st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Estadísticas descriptivas de la base limpia</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Selecciona una variable para obtener sus estadísticas descriptivas</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Recuerda que la tabla puede tardar un poco debido a la cantidad de información a procesar. Te pedimos paciencia 😊</p>", unsafe_allow_html=True)
-#Filtro por variable
-variable = st.selectbox(
-    'Selecciona una variable',
-    df.columns)
 
-st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
-st.dataframe(df[variable].describe().to_pandas())
+# #Leer base de datos
+# df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
+
+# row_count = "{:,}".format(df.shape[0])
+# col_count = "{:,}".format(df.shape[1])
+# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>La base de datos tiene las siguientes características</p>", unsafe_allow_html=True)
+# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Observaciones: {row_count}</p>", unsafe_allow_html=True)
+# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Variables: {col_count}</p>", unsafe_allow_html=True)
+# #Tabla con 10 registros
+
+# st.dataframe(df.head(10).to_pandas())
+
+# #Filtro por variable para obtener estadísticas descriptivas pandas pro
+# st.markdown("---")
+# st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Estadísticas descriptivas de la base limpia</p>", unsafe_allow_html=True)
+# st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Selecciona una variable para obtener sus estadísticas descriptivas</p>", unsafe_allow_html=True)
+# st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Recuerda que la tabla puede tardar un poco debido a la cantidad de información a procesar. Te pedimos paciencia 😊</p>", unsafe_allow_html=True)
+# #Filtro por variable
+# variable = st.selectbox(
+#     'Selecciona una variable',
+#     df.columns)
+
+# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
+# st.dataframe(df[variable].describe().to_pandas())
 
 
 
