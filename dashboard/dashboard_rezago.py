@@ -175,7 +175,7 @@ database.show_data_info(df)
 database.show_variable_stats(df)
 
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer la base de datos completa, puedes descargarla en formato CSV en el siguiente enlace: </p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href=https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv</a></p>", unsafe_allow_html=True)
 # #Leer base de datos
 # df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
 
