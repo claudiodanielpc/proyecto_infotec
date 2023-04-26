@@ -6,7 +6,6 @@ import polars as pl
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
-import geopandas as gpd
 
 
 
@@ -35,7 +34,7 @@ st.sidebar.markdown("<p style='font-family: Montserrat;'>¿Quiéres saber más?<
 #Añadir opciones
 option = st.sidebar.selectbox(
     'Selecciona una opción',
-        ['Sobre el proyecto', 'Fuentes de información']) #Formato de la fuente   
+        ['Sobre el proyecto', 'Fuentes de información', "Sobre el preprocesamiento"]) #Formato de la fuente   
 
 if option == 'Sobre el proyecto':
     st.sidebar.write("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El proyecto de investigación propuesto busca, por un lado, proponer una medición alternativa que no dependa del trabajo de campo y levantamiento de un instrumento estadístico como la Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH). Por otro lado, mediante su abordaje, se persigue que, igualmente, el análisis del rezago habitacional pueda alcanzar un mayor nivel de desagregación geográfica.</p>", unsafe_allow_html=True)
@@ -78,6 +77,19 @@ if option== 'Fuentes de información':
     f"<img src='{url}' alt='{caption}' width='70'/>"
     #Añadir url para redirigir a la página del INEGI
     f"<p><a href='https://earthengine.google.com/'>Google Earth Engine</a></p>"
+    f"</div>",
+    unsafe_allow_html=True)
+
+if option == 'Sobre el preprocesamiento':
+    st.sidebar.write("<p style='font-family: Montserrat;'>Los códigos se pueden consultar en:</p>", unsafe_allow_html=True)
+    st.sidebar.write(" ")
+    url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/600px-Octicons-mark-github.svg.png?20180806170715"
+    caption="Preprocesamiento de datos de cuestionario ampliado del Censo 2020"
+    st.sidebar.markdown(
+    f"<div style='text-align:center; font-family:montserrat;'>"
+    f"<img src='{url}' alt='{caption}' width='70'/>"
+    #Añadir url para redirigir a la página del INEGI
+    f"<p><a href='https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb'>Preprocesamiento INEGI</a></p>"
     f"</div>",
     unsafe_allow_html=True)
 
