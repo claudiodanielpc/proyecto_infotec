@@ -169,7 +169,7 @@ df = database.load_data()
 database.show_data_info(df)
 
 # Show data preview
-database.show_data_preview(df)
+#database.show_data_preview(df)
 
 # Show variable statistics
 database.show_variable_stats(df)
