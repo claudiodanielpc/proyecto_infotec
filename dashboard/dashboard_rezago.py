@@ -1,10 +1,13 @@
 import pandas as pd
 import streamlit as st
 import plotly.graph_objs as go
+import plotly.express as px
 import polars as pl
 from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
+import geopandas as gpd
+
 
 
 
@@ -35,8 +38,7 @@ option = st.sidebar.selectbox(
         ['Sobre el proyecto', 'Fuentes de información']) #Formato de la fuente   
 
 if option == 'Sobre el proyecto':
-    st.sidebar.write("El proyecto tiene como objetivo proporcionar una forma alternativa de medición del rezago habitacional utilizando imágenes satelitales.")
-    st.sidebar.write("La idea no solo es xxx")
+    st.sidebar.write("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El proyecto de investigación propuesto busca, por un lado, proponer una medición alternativa que no dependa del trabajo de campo y levantamiento de un instrumento estadístico como la Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH). Por otro lado, mediante su abordaje, se persigue que, igualmente, el análisis del rezago habitacional pueda alcanzar un mayor nivel de desagregación geográfica.</p>", unsafe_allow_html=True)
 
 if option== 'Fuentes de información':
     st.sidebar.write("<p style='font-family: Montserrat;'>Las fuentes de información utilizadas para este proyecto son:</p>", unsafe_allow_html=True)
@@ -79,6 +81,65 @@ if option== 'Fuentes de información':
     f"</div>",
     unsafe_allow_html=True)
 
+
+#Mapa
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Dónde se concentra el rezago habitacional?</p>", unsafe_allow_html=True)
+#Leer datos de rezago
+rezago=pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.csv")
+fig = px.bar(rezago.sort_values('rezago_vivienda', ascending=True),
+                x='rezago_vivienda', y='entidad', orientation='h',color='rezago_vivienda',
+                
+                color_continuous_scale="YlOrRd")
+fig.update_layout(
+    coloraxis_colorbar=dict(
+        title="% rezago habitacional",
+        
+        dtick=10
+    ))
+#Mostrar todos los valores en el eje y
+fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': rezago['entidad'], 'ticktext': rezago['entidad']})
+fig.update_layout(
+    xaxis_title='% de rezago habitacional',
+    yaxis_title='Entidad',
+    font_family='Montserrat',
+     yaxis=dict(
+        tickmode='array',
+        tickvals=rezago['entidad'],
+        ticktext=rezago['entidad'],
+        dtick=1
+     ),
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Montserrat',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+st.plotly_chart(fig)
+
+
+
+# #Añadir data a mapa de plotly
+# fig = px.choropleth_mapbox(data, geojson=data.geometry, locations=data.index, color="viviendas",
+#                             color_continuous_scale="Viridis",
+#                             range_color=(0, 100),
+#                             mapbox_style="carto-positron",
+#                             zoom=5, center = {"lat": 23.6345, "lon": -102.5528},
+#                             opacity=0.5,
+#                             labels={'viviendas':'Rezago habitacional'}
+#                             )
+# fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+# st.plotly_chart(fig)    
+
 #Base de datos
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre la base de datos</p>", unsafe_allow_html=True)
@@ -115,39 +176,38 @@ st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: jus
 st.dataframe(df[variable].describe().to_pandas())
 
 
-#Mapa
-st.header("Mapa de rezago habitacional")
 
-#mapa en blanco de México con plotly
 
-data=go.Scattergeo(
-    lat = [23.6345],
-    lon = [-102.5528],
-    mode = 'markers',
-    marker_color = 'rgba(255, 0, 0, .8)',
-    marker_size = 10,
-    text = ["México"],
-    hoverinfo = 'text'
-)
+# #mapa en blanco de México con plotly
 
-layout = go.Layout(
-    title = go.layout.Title(
-        text = 'Mapa de rezago habitacional en México'
-    ),
-    geo = go.layout.Geo(
-        scope = 'north america',
-        projection_type = 'azimuthal equal area',
-        showland = True,
-        landcolor = 'rgb(243, 243, 243)',
-        countrycolor = 'rgb(204, 204, 204)',
-        lonaxis_range= [-125, -85],
-        lataxis_range= [5, 35]
-    ),
-)
+# data=go.Scattergeo(
+#     lat = [23.6345],
+#     lon = [-102.5528],
+#     mode = 'markers',
+#     marker_color = 'rgba(255, 0, 0, .8)',
+#     marker_size = 10,
+#     text = ["México"],
+#     hoverinfo = 'text'
+# )
 
-fig = go.Figure(data=data, layout=layout)
+# layout = go.Layout(
+#     title = go.layout.Title(
+#         text = 'Mapa de rezago habitacional en México'
+#     ),
+#     geo = go.layout.Geo(
+#         scope = 'north america',
+#         projection_type = 'azimuthal equal area',
+#         showland = True,
+#         landcolor = 'rgb(243, 243, 243)',
+#         countrycolor = 'rgb(204, 204, 204)',
+#         lonaxis_range= [-125, -85],
+#         lataxis_range= [5, 35]
+#     ),
+# )
 
-st.plotly_chart(fig)
+# fig = go.Figure(data=data, layout=layout)
+
+# st.plotly_chart(fig)
 
 st.markdown("---")
 
