@@ -1,12 +1,13 @@
 import streamlit as st
 import pandas as pd
+import polars as pl
 
 def load_data():
     """
     Load cleaned data from remote CSV file and return as Pandas DataFrame
     """
     url = "https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv"
-    df = pd.read_csv(url)
+    df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv", columns=range(20, 62))
     return df
 
 def show_data_info(df):
@@ -23,7 +24,7 @@ def show_data_preview(df):
     """
     Display a preview of the loaded DataFrame
     """
-    st.dataframe(df.head(10))
+    st.dataframe(df.head(10).to_pandas())
 
 def show_variable_stats(df):
     """
@@ -33,4 +34,4 @@ def show_variable_stats(df):
         'Selecciona una variable',
         df.columns)
     st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
-    st.dataframe(df[variable].describe())
+    st.dataframe(df[variable].describe().to_pandas())
