@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import polars as pl
 
+@st.cache_data
 def load_data():
     """
     Load cleaned data from remote CSV file and return as Pandas DataFrame
@@ -10,6 +11,7 @@ def load_data():
     df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv", columns=range(20, 62))
     return df
 
+@st.cache_data
 def show_data_info(df):
     """
     Display basic information about the loaded DataFrame
@@ -27,7 +29,7 @@ def show_data_preview(df):
     st.dataframe(df.head(10).to_pandas())
 
 
-
+@st.cache_data
 def show_variable_stats(df):
     """
     Display descriptive statistics for a selected variable from the loaded DataFrame
