@@ -28,7 +28,6 @@ def show_data_preview(df):
     st.dataframe(df.head(10).to_pandas())
 
 
-@st.cache
 def show_variable_stats(df):
     """
     Display descriptive statistics for a selected variable from the loaded DataFrame
@@ -37,4 +36,4 @@ def show_variable_stats(df):
         'Selecciona una variable',
         df.columns)
     st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
-    st.dataframe(df[variable].describe().to_pandas())
+    st.dataframe(df[variable].describe())
