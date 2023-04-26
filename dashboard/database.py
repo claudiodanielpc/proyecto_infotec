@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import polars as pl
 
-@st.cache
+@st.cache_data
 def load_data():
     """
     Load cleaned data from remote CSV file and return as Pandas DataFrame
