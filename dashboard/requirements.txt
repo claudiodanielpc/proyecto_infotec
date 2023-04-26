@@ -1,5 +1,6 @@
+geopandas==0.12.2
 pandas==1.5.3
-plotly==5.14.0
+plotly==5.14.1
 polars==0.17.9
 streamlit==1.21.0
 streamlit_extras==0.2.7
