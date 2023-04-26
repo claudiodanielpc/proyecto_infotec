@@ -11,7 +11,6 @@ def load_data():
     df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv", columns=range(20, 62))
     return df
 
-@st.cache_data
 def show_data_info(df):
     """
     Display basic information about the loaded DataFrame
