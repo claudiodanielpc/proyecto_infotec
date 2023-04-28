@@ -199,9 +199,12 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 # Define the URL of the Jupyter notebook on Binder
 binder_url = "https://mybinder.org/v2/gh/claudiodanielpc/infotec_prepoc/HEAD?labpath=preproc_info_inegi.ipynb"
 
-# Use the IFrame component to embed the notebook
-st.write("Jupyter Notebook")
-st.write(IFrame(binder_url, width=1000, height=600))
+# Use requests to get the HTML version of the notebook
+response = requests.get(f"{binder_url}&download=true")
+html_content = response.content.decode("utf-8")
+
+# Use the st.components.v1.html() function to embed the HTML content
+st.components.v1.html(html_content, height=1000)
 
 
 #Pie de página
