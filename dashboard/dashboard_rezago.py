@@ -188,7 +188,10 @@ url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B
 response = requests.get(url)
 html_content = response.content.decode("utf-8")
 
-st.components.v1.html(html_content, height=800, width=800, scrolling=True)
+#st.components.v1.html(html_content, height=800, width=800, scrolling=True)
+
+with st.expander("Jupyter Notebook", expanded=True):
+    st.components.v1.html(html_content, height=800, width=800, scrolling=True)
 
 
 
