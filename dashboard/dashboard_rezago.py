@@ -184,12 +184,11 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
 
-@st.cache_data
 url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
 response = requests.get(url)
 html_content = response.content.decode("utf-8")
 
-with st.expander("Jupyter Notebook", expanded=False):
+with st.expander("Mostrar Jupyter Notebook con procesamiento de imágenes", expanded=False):
     st.components.v1.html(html_content, height=600, width=750, scrolling=True)
 
 
