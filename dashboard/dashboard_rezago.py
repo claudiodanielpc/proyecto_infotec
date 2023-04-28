@@ -190,8 +190,8 @@ html_content = response.content.decode("utf-8")
 
 #st.components.v1.html(html_content, height=800, width=800, scrolling=True)
 
-with st.expander("Jupyter Notebook", expanded=True):
-    st.components.v1.html(html_content, height=800, width=800, scrolling=True)
+with st.expander("Jupyter Notebook", expanded=False):
+    st.components.v1.html(html_content, height=500, width=500, scrolling=True)
 
 
 
