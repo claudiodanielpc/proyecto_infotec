@@ -206,7 +206,7 @@ html_content = response.content.decode("utf-8")
 style = {"height": "800px", "width": "1200px"}
 
 # Use the st.components.v1.html() function to embed the HTML content
-st.components.v1.html(html_content, height=1000, width=1000,style=style)
+st.components.v1.html(html_content, height=800, width=1200,style=style)
 
 
 #Pie de página
