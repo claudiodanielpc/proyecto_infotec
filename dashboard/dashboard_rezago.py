@@ -33,10 +33,16 @@ def show_code():
     url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
     codigo=requests.get(url_codigo).text
     st.code(codigo, language="r")
+    with st.beta_expander("Mostrar código",expanded=False):
+        st.code(codigo, language="r")
 
-if st.button("Mostrar código"):
+centered_button = f'<div style="text-align:center;"><button>Show Code</button></div>'
+
+if st.button('Mostrar código de cálculo del rezago habitacional con la ENIGH'):
+    st.write(centered_button, unsafe_allow_html=True)
     show_code()
-
+else:
+    st.write(centered_button, unsafe_allow_html=True)
 
 #Añadir sidebar
 st.sidebar.markdown("<p style='font-family: Montserrat; font-weight: bold;'>Menú</p>", unsafe_allow_html=True)
