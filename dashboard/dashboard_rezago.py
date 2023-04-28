@@ -8,7 +8,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from streamlit.elements import spinner
 import database
 import requests
-from IPython.display import IFrame
+import streamlit_jupyter as sj
 
 
 
@@ -195,12 +195,11 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 #     iframe_code = f'<iframe src="{notebook_url}" width="{notebook_width}" height="{notebook_height}"></iframe>'
 #     st.markdown(iframe_code, unsafe_allow_html=True)
 
-    # Define the URL of the Jupyter notebook on Binder
-binder_url = "https://mybinder.org/v2/gl/claudiodanielpc%2Finfotec_preproc%2F-%2Fblob%2Fmain%2Fpreproc_info_inegi.ipynb/HEAD?labpath=https%3A%2F%2Fgitlab.com%2Fclaudiodanielpc%2Finfotec_preproc%2F-%2Fblob%2Fmain%2Fpreproc_info_inegi.ipynb"
+notebook_url="https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb"
+notebook=sj.Notebook()
+notebook.run(notebook_url)
 
-# Use the IFrame component to embed the notebook
-st.write("Jupyter Notebook")
-st.write(IFrame(binder_url, width=1000, height=600))
+
 
 #Pie de página
 st.markdown("---")
