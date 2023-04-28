@@ -189,7 +189,7 @@ response = requests.get(url)
 html_content = response.content.decode("utf-8")
 
 with st.expander("Mostrar Jupyter Notebook con procesamiento de imágenes", expanded=False):
-    st.components.v1.html(html_content, height=600, width=750, scrolling=True)
+    st.components.v1.html(html_content, height=600, width=900, scrolling=True)
 
 
 
