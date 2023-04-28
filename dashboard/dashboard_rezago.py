@@ -189,7 +189,7 @@ left_info_col.markdown(
         ### Autor
         Comentarios, preguntas o sugerencias.
         ##### Claudio Daniel Pacheco-Castro
-        ###### Alumno de la Maestría en Ciencia de Datos e Información. INFOTEC[![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40claudiodanielpc)](https://twitter.com/claudiodanielpc)
+        ###### Alumno de la Maestría en Ciencia de Datos e Información. INFOTEC[<img src='https://www.infotec.mx/work/models/Infotec/2019/img/logo_infotec.png' alt='INFOTEC' width='70'/>](https://www.infotec.mx/)
         ###### [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40claudiodanielpc)](https://twitter.com/claudiodanielpc)
         - Email:  <claudio@comunidad.unam.mx> o <claudiodanielpc@gmail.com>
         - GitHub: https://github.com/claudiodanielpc
