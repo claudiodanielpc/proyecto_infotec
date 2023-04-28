@@ -37,6 +37,7 @@ def show_code():
     with st.beta_expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
         st.code(codigo, language="r")
 
+show_code()
 # centered_button = f'<div style="text-align:center;"><button>Mostrar código de cálculo del rezago habitacional con la ENIGH</button></div>'
 
 # if st.button('Mostrar código de cálculo del rezago habitacional con la ENIGH'):
