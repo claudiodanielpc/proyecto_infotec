@@ -179,7 +179,11 @@ database.show_variable_stats(df)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer la base de datos completa, puedes descargarla en formato CSV en el siguiente enlace: </p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
+st.markdown("---")
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
 
+
+#Pie de página
 st.markdown("---")
 
 left_info_col, right_info_col = st.columns(2)
