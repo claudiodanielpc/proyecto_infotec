@@ -188,7 +188,7 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 #     notebook_height = 800
 #     iframe(notebook_url, width=notebook_width, height=notebook_height)
 
-with st.beta_expander('Show Jupyter Notebook'):
+with st.expander('Show Jupyter Notebook'):
     notebook_url = 'https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/preproc_info_inegi.ipynb'
     notebook_width = 1000
     notebook_height = 800
