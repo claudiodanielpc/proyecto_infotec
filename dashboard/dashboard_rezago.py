@@ -7,6 +7,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 #from streamlit_pandas_profiling import st_profile_report
 from streamlit.elements import spinner
 import database
+import requests
 
 
 
@@ -26,6 +27,15 @@ st.markdown("<p style='font-family: Montserrat; font-size: 15px; text-align: jus
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se mide el rezago habitacional?</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Para la cuantificación del rezago, se consideran las siguientes variables y condiciones:</p>", unsafe_allow_html=True)
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
+
+#Mostrar código para el cálculo del rezago habitacional
+def show_code():
+    url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
+    codigo=requests.get(url_codigo).text
+    st.code(codigo, language="r")
+
+if st.button("Mostrar código"):
+    show_code()
 
 
 #Añadir sidebar
