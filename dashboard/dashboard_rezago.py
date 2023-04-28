@@ -33,7 +33,7 @@ def show_code():
     url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
     codigo=requests.get(url_codigo).text
     st.code(codigo, language="r")
-    with st.beta_expander("Mostrar código",expanded=False):
+    with st.beta_expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
         st.code(codigo, language="r")
 
 centered_button = f'<div style="text-align:center;"><button>Mostrar código de cálculo del rezago habitacional con la ENIGH</button></div>'
