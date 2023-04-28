@@ -182,11 +182,18 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
+# with st.beta_expander('Show Jupyter Notebook'):
+#     notebook_url = 'https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb'
+#     notebook_width = 1000
+#     notebook_height = 800
+#     iframe(notebook_url, width=notebook_width, height=notebook_height)
+
 with st.beta_expander('Show Jupyter Notebook'):
-    notebook_url = 'https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb'
+    notebook_url = 'https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/preproc_info_inegi.ipynb'
     notebook_width = 1000
     notebook_height = 800
-    iframe(notebook_url, width=notebook_width, height=notebook_height)
+    iframe_code = f'<iframe src="{notebook_url}" width="{notebook_width}" height="{notebook_height}"></iframe>'
+    st.markdown(iframe_code, unsafe_allow_html=True)
 
 #Pie de página
 st.markdown("---")
