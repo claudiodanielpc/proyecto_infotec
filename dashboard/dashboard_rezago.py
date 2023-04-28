@@ -204,7 +204,7 @@ response = requests.get(f"{binder_url}&download=true")
 html_content = response.content.decode("utf-8")
 
 # Use the st.components.v1.html() function to embed the HTML content
-st.components.v1.html(html_content, height=1000)
+st.components.v1.html(html_content, height=1000, width=1000)
 
 
 #Pie de página
