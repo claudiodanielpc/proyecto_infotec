@@ -200,7 +200,8 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 binder_url = "https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb"
 
 # Use requests to get the HTML version of the notebook
-response = requests.get(f"{binder_url}&download=true")
+#response = requests.get(f"{binder_url}&download=true")
+response=requests.get(binder_url)
 html_content = response.content.decode("utf-8")
 
 # Use the st.components.v1.html() function to embed the HTML content
