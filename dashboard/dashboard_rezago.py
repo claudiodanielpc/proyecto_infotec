@@ -208,7 +208,7 @@ response = requests.get(url)
 html_content = response.content.decode("utf-8")
 
 # # # Use the st.components.v1.html() function to embed the HTML content
-st.components.v1.html(html_content, height=800, width=800)
+st.components.v1.html(html_content, height=800, width=800, scrolling=True)
 
 # # Use requests to get the content of the notebook file
 # response = requests.get(github_url)
