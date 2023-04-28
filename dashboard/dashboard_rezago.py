@@ -197,8 +197,8 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 #     st.markdown(iframe_code, unsafe_allow_html=True)
 
 # Define the URL of the Jupyter notebook on Binder
-binder_url = "https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb"
-
+#binder_url = "https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb"
+binder_url="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/preproc_info_inegi.ipynb"
 # Use requests to get the HTML version of the notebook
 #response = requests.get(f"{binder_url}&download=true")
 response=requests.get(binder_url)
