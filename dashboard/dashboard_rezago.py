@@ -29,18 +29,6 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
 
 #Mostrar código para el cálculo del rezago habitacional
-# @st.cache_data
-# def retrieve_code(url):
-#     response = requests.get(url)
-#     return response.text
-
-# def show_code():
-#     url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
-#     codigo = retrieve_code(url_codigo)
-#     with st.expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
-#         st.code(codigo, language="r")
-
-# show_code()
 @st.cache_data
 def retrieve_code(url):
     response = requests.get(url)
@@ -52,10 +40,8 @@ def show_code():
     with st.expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
         st.code(codigo, language="r")
 
-centered_style = "<style>div.css-1e27b3v{text-align:center; font-family: Montserrat}</style>"
-
-st.markdown(centered_style, unsafe_allow_html=True)
 show_code()
+
 
 
 #Añadir sidebar
@@ -171,17 +157,6 @@ st.plotly_chart(fig)
 
 
 
-# #Añadir data a mapa de plotly
-# fig = px.choropleth_mapbox(data, geojson=data.geometry, locations=data.index, color="viviendas",
-#                             color_continuous_scale="Viridis",
-#                             range_color=(0, 100),
-#                             mapbox_style="carto-positron",
-#                             zoom=5, center = {"lat": 23.6345, "lon": -102.5528},
-#                             opacity=0.5,
-#                             labels={'viviendas':'Rezago habitacional'}
-#                             )
-# fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
-# st.plotly_chart(fig)    
 
 #Base de datos
 st.markdown("---")
@@ -192,80 +167,18 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.markdown("---")
 
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estructura de la base limpia: </p>", unsafe_allow_html=True)
-# Load data
+# Cargar datos
 df = database.load_data()
 
-# Show basic data info
+# Info básica
 database.show_data_info(df)
 
-# Show data preview
-#database.show_data_preview(df)
-
-# Show variable statistics
+# Estadística descriptiva de cada variable
 database.show_variable_stats(df)
 
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer la base de datos completa, puedes descargarla en formato CSV en el siguiente enlace: </p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
-
-# #Leer base de datos
-# df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
-
-# row_count = "{:,}".format(df.shape[0])
-# col_count = "{:,}".format(df.shape[1])
-# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>La base de datos tiene las siguientes características</p>", unsafe_allow_html=True)
-# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Observaciones: {row_count}</p>", unsafe_allow_html=True)
-# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Variables: {col_count}</p>", unsafe_allow_html=True)
-# #Tabla con 10 registros
-
-# st.dataframe(df.head(10).to_pandas())
-
-# #Filtro por variable para obtener estadísticas descriptivas pandas pro
-# st.markdown("---")
-# st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Estadísticas descriptivas de la base limpia</p>", unsafe_allow_html=True)
-# st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Selecciona una variable para obtener sus estadísticas descriptivas</p>", unsafe_allow_html=True)
-# st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Recuerda que la tabla puede tardar un poco debido a la cantidad de información a procesar. Te pedimos paciencia 😊</p>", unsafe_allow_html=True)
-# #Filtro por variable
-# variable = st.selectbox(
-#     'Selecciona una variable',
-#     df.columns)
-
-# st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
-# st.dataframe(df[variable].describe().to_pandas())
-
-
-
-
-# #mapa en blanco de México con plotly
-
-# data=go.Scattergeo(
-#     lat = [23.6345],
-#     lon = [-102.5528],
-#     mode = 'markers',
-#     marker_color = 'rgba(255, 0, 0, .8)',
-#     marker_size = 10,
-#     text = ["México"],
-#     hoverinfo = 'text'
-# )
-
-# layout = go.Layout(
-#     title = go.layout.Title(
-#         text = 'Mapa de rezago habitacional en México'
-#     ),
-#     geo = go.layout.Geo(
-#         scope = 'north america',
-#         projection_type = 'azimuthal equal area',
-#         showland = True,
-#         landcolor = 'rgb(243, 243, 243)',
-#         countrycolor = 'rgb(204, 204, 204)',
-#         lonaxis_range= [-125, -85],
-#         lataxis_range= [5, 35]
-#     ),
-# )
-
-# fig = go.Figure(data=data, layout=layout)
-
-# st.plotly_chart(fig)
 
 st.markdown("---")
 
@@ -276,6 +189,7 @@ left_info_col.markdown(
         ### Autor
         Comentarios, preguntas o sugerencias.
         ##### Claudio Daniel Pacheco-Castro [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/bukotsunikki.svg?style=social&label=Follow%20%40claudiodanielpc)](https://twitter.com/claudiodanielpc)
+        ##### Alumno de la Maestría en Ciencia de Datos e Información de INFOTEC
         - Email:  <claudio@comunidad.unam.mx> o <claudiodanielpc@gmail.com>
         - GitHub: https://github.com/claudiodanielpc
         """,
