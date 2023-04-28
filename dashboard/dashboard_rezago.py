@@ -196,8 +196,11 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 #     st.markdown(iframe_code, unsafe_allow_html=True)
 
 notebook_url="https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb"
-notebook=sj.Notebook()
-notebook.run(notebook_url)
+#Display notebook
+
+sj.display(notebook_url, height=1000, scrolling=True)
+
+
 
 
 
