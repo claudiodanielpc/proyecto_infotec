@@ -29,12 +29,15 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
 
 #Mostrar código para el cálculo del rezago habitacional
+@st.cache
+def retrieve_code(url):
+    response = requests.get(url)
+    return response.text
+
 def show_code():
     url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
-    codigo=requests.get(url_codigo).text
-    #st.code(codigo, language="r")
-
-    with st.beta_expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
+    codigo = retrieve_code(url_codigo)
+    with st.expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
         st.code(codigo, language="r")
 
 show_code()
