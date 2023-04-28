@@ -29,6 +29,7 @@ st.markdown("<p style='font-family: Montserrat; font-size: 15px; text-align: jus
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Cómo se mide el rezago habitacional?</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Para la cuantificación del rezago, se consideran las siguientes variables y condiciones:</p>", unsafe_allow_html=True)
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer cómo se cuantifica el rezago utilizando la ENIGH, puedes dar click para consultar el código.</p>", unsafe_allow_html=True)
 
 #Mostrar código para el cálculo del rezago habitacional
 @st.cache_data
@@ -43,6 +44,8 @@ def show_code():
         st.code(codigo, language="r")
 
 show_code()
+
+
 
 
 
@@ -115,6 +118,8 @@ if option == 'Sobre el preprocesamiento':
 
 #Mapa
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>¿Dónde se concentra el rezago habitacional?</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>El rezago habitacional se localiza principalmente en las entidades del sur, sureste de nuestro país: </p>", unsafe_allow_html=True)
+
 #Leer datos de rezago
 rezago=pd.read_csv("https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.csv")
 fig = px.bar(rezago.sort_values('rezago_vivienda', ascending=True),
