@@ -183,46 +183,13 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
-# with st.beta_expander('Show Jupyter Notebook'):
-#     notebook_url = 'https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb'
-#     notebook_width = 1000
-#     notebook_height = 800
-#     iframe(notebook_url, width=notebook_width, height=notebook_height)
 
-# with st.expander('Show Jupyter Notebook'):
-#     notebook_url = 'https://gitlab.com/claudiodanielpc/infotec/-/raw/main/preproc_info_inegi.ipynb'
-#     notebook_width = 1000
-#     notebook_height = 800
-#     iframe_code = f'<iframe src="{notebook_url}" width="{notebook_width}" height="{notebook_height}"></iframe>'
-#     st.markdown(iframe_code, unsafe_allow_html=True)
-
-# Define the URL of the Jupyter notebook on Binder
-
-# github_url="https://github.com/claudiodanielpc/infotec_prepoc/blob/main/preproc_info_inegi.ipynb"
-# #response = requests.get(f"{binder_url}&download=true")
-# #response=requests.get(binder_url)
-# # html_content = response.content.decode("utf-8")
-
-url="https://nbviewer.org/github/claudiodanielpc/infotec_prepoc/blob/main/preproc_info_inegi.ipynb"
+url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
 response = requests.get(url)
 html_content = response.content.decode("utf-8")
 
-# # # Use the st.components.v1.html() function to embed the HTML content
 st.components.v1.html(html_content, height=800, width=800, scrolling=True)
 
-# # Use requests to get the content of the notebook file
-# response = requests.get(github_url)
-# notebook_content = response.content.decode("utf-8")
-
-# # Define the URL of the notebook on NBViewer
-# nbviewer_url = f"https://nbviewer.jupyter.org/url/{github_url.replace('github.com', 'raw.githubusercontent.com')}"
-    
-# # Use requests to get the HTML version of the notebook from NBViewer
-# response = requests.get(f"{nbviewer_url}&raw=true")
-# html_content = response.content.decode("utf-8")
-
-# # Use the st.components.v1.html() function to embed the HTML content
-# st.components.v1.html(html_content, height=800, width=800)
 
 
 
