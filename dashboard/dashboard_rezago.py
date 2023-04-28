@@ -183,6 +183,7 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales descargadas de Google Earth Engine fueron conjuntadas, normalizadas y convertidas a arreglos de numpy. Al final del Jupyter Notebook se puede apreciar lo realizado.</p>", unsafe_allow_html=True)
 
 url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
 response = requests.get(url)
