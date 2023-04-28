@@ -29,6 +29,18 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
 
 #Mostrar código para el cálculo del rezago habitacional
+# @st.cache_data
+# def retrieve_code(url):
+#     response = requests.get(url)
+#     return response.text
+
+# def show_code():
+#     url_codigo="https://raw.githubusercontent.com/claudiodanielpc/proyecto_infotec/main/dashboard/rezago.r"
+#     codigo = retrieve_code(url_codigo)
+#     with st.expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
+#         st.code(codigo, language="r")
+
+# show_code()
 @st.cache_data
 def retrieve_code(url):
     response = requests.get(url)
@@ -40,14 +52,11 @@ def show_code():
     with st.expander("Mostrar código de cálculo del rezago habitacional con la ENIGH",expanded=False):
         st.code(codigo, language="r")
 
-show_code()
-# centered_button = f'<div style="text-align:center;"><button>Mostrar código de cálculo del rezago habitacional con la ENIGH</button></div>'
+centered_style = "<style>div.css-1e27b3v{text-align:center; font-family: Montserrat}</style>"
 
-# if st.button('Mostrar código de cálculo del rezago habitacional con la ENIGH'):
-#     st.write(centered_button, unsafe_allow_html=True)
-#     show_code()
-# else:
-#     st.write(centered_button, unsafe_allow_html=True)
+st.write(centered_style, unsafe_allow_html=True)
+show_code()
+
 
 #Añadir sidebar
 st.sidebar.markdown("<p style='font-family: Montserrat; font-weight: bold;'>Menú</p>", unsafe_allow_html=True)
