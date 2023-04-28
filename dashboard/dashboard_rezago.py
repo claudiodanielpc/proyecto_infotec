@@ -203,8 +203,12 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 # #response=requests.get(binder_url)
 # # html_content = response.content.decode("utf-8")
 
+url="https://nbviewer.org/github/claudiodanielpc/infotec_prepoc/blob/main/preproc_info_inegi.ipynb"
+response = requests.get(url)
+html_content = response.content.decode("utf-8")
+
 # # # Use the st.components.v1.html() function to embed the HTML content
-# # st.components.v1.html(html_content, height=800, width=800)
+st.components.v1.html(html_content, height=800, width=800)
 
 # # Use requests to get the content of the notebook file
 # response = requests.get(github_url)
@@ -221,22 +225,6 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 # st.components.v1.html(html_content, height=800, width=800)
 
 
-# Define the URL of the Jupyter notebook on GitHub
-github_raw_url = "https://raw.githubusercontent.com/claudiodanielpc/infotec_prepoc/main/preproc_info_inegi.ipynb"
-
-# Use requests to get the content of the notebook file
-response = requests.get(github_raw_url)
-notebook_content = response.content.decode("utf-8")
-
-# Define the URL of the notebook on NBViewer
-nbviewer_url = f"https://nbviewer.jupyter.org/url/{github_raw_url}"
-    
-# Use requests to get the HTML version of the notebook from NBViewer
-response = requests.get(f"{nbviewer_url}&raw=true")
-html_content = response.content.decode("utf-8")
-
-# Use the st.components.v1.html() function to embed the HTML content
-st.components.v1.html(html_content, height=800, width=800)
 
 #Pie de página
 st.markdown("---")
