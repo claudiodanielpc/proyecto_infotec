@@ -29,7 +29,7 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/raw/main/rezago.png", width=700)
 
 #Mostrar código para el cálculo del rezago habitacional
-@st.cache
+@st.cache_data
 def retrieve_code(url):
     response = requests.get(url)
     return response.text

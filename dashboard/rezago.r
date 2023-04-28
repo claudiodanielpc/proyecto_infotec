@@ -36,15 +36,17 @@ enigh <- read.csv("microdatos/viviendas.csv")%>%
                           ~ "En rezago", 
                           
                           TRUE ~ "Fuera de rezago"),
-         #extraer primero dos caracteres de folioviv
-         entidad=substr(folioviv,1,2))
+          #Crear variable de entidad. Si el folioviv tiene 10 caracteres, extraer los primeros dos caracteres si no, solo 1 caracter
+          entidad=case_when(nchar(folioviv)==10 ~ substr(folioviv,1,2),
+                            TRUE ~ substr(folioviv,1,1)))
 
 
 
-enigh%>%
+print((enigh%>%
   #Diseño muestral
   as_survey(weights=factor, strata=est_dis, ids=upm)%>%
-  #Estimación puntual
-  group_by(rezago)%>%
-  summarise(viviendas=survey_total(vartype="cv"))%>%
-  ungroup()
+  #Estimación de rezago por entidad
+  group_by(entidad,rezago)%>%
+  summarise(viviendas=survey_prop(vartype="cv"))%>%
+  filter(rezago=="En rezago")%>%
+  ungroup()),n=32)
