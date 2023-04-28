@@ -8,6 +8,7 @@ from streamlit_extras.dataframe_explorer import dataframe_explorer
 from streamlit.elements import spinner
 import database
 import requests
+from streamlit.components.v1 import iframe
 
 
 
@@ -183,7 +184,9 @@ st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
 with st.beta_expander('Show Jupyter Notebook'):
     notebook_url = 'https://github.com/claudiodanielpc/proyecto_infotec/blob/main/preproc_info_inegi.ipynb'
-    st.markdown(f'Click [here]({notebook_url}) to view the Jupyter notebook.')
+    notebook_width = 1000
+    notebook_height = 800
+    iframe(notebook_url, width=notebook_width, height=notebook_height)
 
 #Pie de página
 st.markdown("---")

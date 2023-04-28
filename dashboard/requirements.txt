@@ -3,5 +3,4 @@ plotly==5.14.1
 polars==0.17.9
 Requests==2.29.0
 streamlit==1.21.0
-streamlit_embedcode==0.1.2
 streamlit_extras==0.2.7
