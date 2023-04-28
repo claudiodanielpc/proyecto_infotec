@@ -199,7 +199,7 @@ notebook_url="https://github.com/claudiodanielpc/proyecto_infotec/blob/main/prep
 
 
 #Show the notebook
-st.markdown(f'<iframe src="{notebook_url}" width="1000" height="800"></iframe>', unsafe_allow_html=True)s|
+st.markdown(f'<iframe src="{notebook_url}" width="1000" height="800"></iframe>', unsafe_allow_html=True)
 
 
 
