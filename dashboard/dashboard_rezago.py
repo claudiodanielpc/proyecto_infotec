@@ -54,7 +54,7 @@ def show_code():
 
 centered_style = "<style>div.css-1e27b3v{text-align:center; font-family: Montserrat}</style>"
 
-st.write(centered_style, unsafe_allow_html=True)
+st.markdown(centered_style, unsafe_allow_html=True)
 show_code()
 
 
