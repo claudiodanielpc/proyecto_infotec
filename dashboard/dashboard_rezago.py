@@ -202,9 +202,11 @@ binder_url = "https://mybinder.org/v2/gh/claudiodanielpc/infotec_prepoc/HEAD?lab
 # Use requests to get the HTML version of the notebook
 response = requests.get(f"{binder_url}&download=true")
 html_content = response.content.decode("utf-8")
+# Define the style dictionary with the desired height and width
+style = {"height": "800px", "width": "1200px"}
 
 # Use the st.components.v1.html() function to embed the HTML content
-st.components.v1.html(html_content, height=1000, width=1000)
+st.components.v1.html(html_content, height=1000, width=1000,style=style)
 
 
 #Pie de página
