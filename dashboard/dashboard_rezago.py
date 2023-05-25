@@ -225,7 +225,7 @@ fig.update_layout(
     coloraxis_colorbar=dict(
         title="índice de rezago habitacional",
         
-        dtick=10
+        dtick=1
     ))
 # Eje x con valores de 0 a 1 
 fig.update_layout(xaxis_range=[0, 1])
