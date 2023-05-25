@@ -227,8 +227,8 @@ fig.update_layout(
         
         dtick=10
     ))
-# Eje x con los valores de ind_rez
-fig.update_layout(xaxis={'tickmode': 'array', 'tickvals': filtered_rezago['ind_rez'], 'ticktext': filtered_rezago['ind_rez']})
+# Eje x con valores de 0 a 1 separados de 0.5
+fig.update_layout(xaxis=dict(tickmode='linear', tick0=0, dtick=0.5))
 
 # #Mostrar todos los valores en el eje y
 fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['mza'], 'ticktext': filtered_rezago['mza']})
