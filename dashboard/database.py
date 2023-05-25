@@ -49,6 +49,9 @@ def hist_plotly(df):
     nom_ent = st.selectbox(
         'Selecciona una entidad',
         df['nom_ent'].unique())
+    #generar una subtabla con la entidad seleccionada
+    filtro=df.filter(df['nom_ent'] == nom_ent)
     st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Histograma de la variable {nom_ent}</p>", unsafe_allow_html=True)
-    fig = px.histogram(df.filter(df['nom_ent'] == nom_ent), x=df["ind_rez"], nbins=10, color_discrete_sequence=['#F63366'])
+    fig = px.histogram(filtro, x=df["ind_rez"], nbins=10, color_discrete_sequence=['#F63366'])
+    #fig = px.histogram(filtro.filter(filtro['nom_ent'] == nom_ent), x=df["ind_rez"], nbins=10, color_discrete_sequence=['#F63366'])
     st.plotly_chart(fig)
