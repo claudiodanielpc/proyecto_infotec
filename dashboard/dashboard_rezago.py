@@ -221,40 +221,40 @@ fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
                 
                 color_continuous_scale="YlOrRd")
 
-# fig.update_layout(
-#     coloraxis_colorbar=dict(
-#         title="índice de rezago habitacional",
+fig.update_layout(
+    coloraxis_colorbar=dict(
+        title="índice de rezago habitacional",
         
-#         dtick=10
-#     ))
-# #Mostrar todos los valores en el eje y
-# fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['mza'], 'ticktext': filtered_rezago['mza']})
-# fig.update_layout(
-#     xaxis_title='índice de rezago habitacional',
-#     yaxis_title='Manzana',
-#     font_family='Montserrat',
-#      yaxis=dict(
-#         tickmode='array',
-#         tickvals=filtered_rezago['mza'],
-#         ticktext=filtered_rezago['mza'],
-#         dtick=1
-#      ),
-#     annotations=[
-#         go.layout.Annotation(
-#             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
-#             xref='paper',
-#             yref='paper',
-#             x=0,
-#             y=-0.2,
-#             showarrow=False,
-#             font=dict(
-#                 family='Montserrat',
-#                 size=12,
-#                 color='grey'
-#             )
-#         )
-#     ]
-# )
+        dtick=10
+    ))
+#Mostrar todos los valores en el eje y
+fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['mza'], 'ticktext': filtered_rezago['mza']})
+fig.update_layout(
+    xaxis_title='índice de rezago habitacional',
+    yaxis_title='Manzana',
+    font_family='Montserrat',
+     yaxis=dict(
+        tickmode='array',
+        tickvals=filtered_rezago['mza'],
+        ticktext=filtered_rezago['mza'],
+        dtick=1
+     ),
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Montserrat',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
 st.plotly_chart(fig)
 
 
