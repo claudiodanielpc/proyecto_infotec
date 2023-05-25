@@ -208,15 +208,15 @@ entidades = df['nom_ent'].unique().to_list()
 selected_entity = st.selectbox('Selecciona una entidad', entidades)
 
 # # Filter the DataFrame for the selected entity
-# filtered_rezago = df[df['nom_ent'] == selected_entity]
+filtered_rezago = df[df['nom_ent'] == selected_entity]
 
 # # Select the top 10 municipalities based on 'rezago_vivienda'
-# filtered_rezago = filtered_rezago.sort_values('ind_rez', ascending=False).head(10)
+filtered_rezago = filtered_rezago.sort_values('ind_rez', ascending=False).head(10)
 
-# fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
-#                 x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
+fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
+                x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
                 
-#                 color_continuous_scale="YlOrRd")
+                color_continuous_scale="YlOrRd")
 
 # fig.update_layout(
 #     coloraxis_colorbar=dict(
