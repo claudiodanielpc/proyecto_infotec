@@ -211,7 +211,7 @@ selected_entity = st.selectbox('Selecciona una entidad', entidades)
 filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 
 #Histograma con plotly
-fig = px.histogram(filtered_rezago, x=10, nbins=20, color_discrete_sequence=['#F63366'])
+fig = px.histogram(filtered_rezago, x='ind_rez', nbins=10, color_discrete_sequence=['#F63366'])
 fig.update_layout(
     xaxis_title='Índice de rezago habitacional',
     yaxis_title='Número de manzanas',
