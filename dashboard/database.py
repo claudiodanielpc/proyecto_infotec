@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 import polars as pl
+import plotly.graph_objs as go
+import plotly.express as px
 
 @st.cache_data
 def load_data():
@@ -39,3 +41,14 @@ def show_variable_stats(df):
         df.columns)
     st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estadísticas descriptivas de la variable {variable}</p>", unsafe_allow_html=True)
     st.dataframe(df[variable].describe())
+
+def hist_plotly(df):
+    """
+    Mostrar el histograma de acuerdo con el nom_ent seleccionado
+    """
+    nom_ent = st.selectbox(
+        'Selecciona una entidad',
+        df['nom_ent'].unique())
+    st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Histograma de la variable {nom_ent}</p>", unsafe_allow_html=True)
+    fig = px.histogram(df.filter(df['nom_ent'] == nom_ent), x=df["ind_rez"], nbins=10, color_discrete_sequence=['#F63366'])
+    st.plotly_chart(fig)

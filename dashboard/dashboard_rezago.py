@@ -185,10 +185,9 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 # Cargar datos
 df = database.load_data()
 
-# Create a list of unique entities
-entidades = df['nom_ent'].unique().to_list()
-#Ordenar alfabéticamente
-entidades=entidades.sort()
+# # Create a list of unique entities
+# entidades = df['nom_ent'].unique().to_list()
+
 
 # Info básica
 database.show_data_info(df)
@@ -201,36 +200,37 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 st.markdown("---")  
 
+database.hist_plotly(df)
 
-# Create a dropdown selector for the entities
-selected_entity = st.selectbox('Selecciona una entidad', entidades)
+# # Create a dropdown selector for the entities
+# selected_entity = st.selectbox('Selecciona una entidad', entidades)
 
-# # Filter the DataFrame for the selected entity
-filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
+# # # Filter the DataFrame for the selected entity
+# filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 
-#Histograma con plotly
-fig = px.histogram(filtered_rezago, x=filtered_rezago['ind_rez'], nbins=10, color_discrete_sequence=['#F63366'])
-fig.update_layout(
-    xaxis_title='Índice de rezago habitacional',
-    yaxis_title='Número de manzanas',
-    font_family='Montserrat',
-    annotations=[
-        go.layout.Annotation(
-            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
-            xref='paper',
-            yref='paper',
-            x=0,
-            y=-0.2,
-            showarrow=False,
-            font=dict(
-                family='Montserrat',
-                size=12,
-                color='grey'
-            )
-        )
-    ]
-)
-st.plotly_chart(fig)
+# #Histograma con plotly
+# fig = px.histogram(filtered_rezago, x=filtered_rezago['ind_rez'], nbins=10, color_discrete_sequence=['#F63366'])
+# fig.update_layout(
+#     xaxis_title='Índice de rezago habitacional',
+#     yaxis_title='Número de manzanas',
+#     font_family='Montserrat',
+#     annotations=[
+#         go.layout.Annotation(
+#             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+#             xref='paper',
+#             yref='paper',
+#             x=0,
+#             y=-0.2,
+#             showarrow=False,
+#             font=dict(
+#                 family='Montserrat',
+#                 size=12,
+#                 color='grey'
+#             )
+#         )
+#     ]
+# )
+# st.plotly_chart(fig)
 
 
 # # Sort the DataFrame and select top 10 rows
