@@ -210,7 +210,7 @@ st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20p
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales que se proponen utilizar son las correspondientes al estado de Aguascalientes. Estas ya están libres de nubes por lo que están listas para utilizarse.</p>", unsafe_allow_html=True)
 
 
-st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2017.png", width=300)
+st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2017.png?raw=true", width=300)
 
 # url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
 # response = requests.get(url)
