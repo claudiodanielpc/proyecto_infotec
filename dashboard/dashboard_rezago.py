@@ -203,6 +203,7 @@ df=database.load_data()
 entidades = df['nom_ent'].unique().to_list()
 
 
+
 # Create a dropdown selector for the entities
 selected_entity = st.selectbox('Select an entity', entidades)
 
