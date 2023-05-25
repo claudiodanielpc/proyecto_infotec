@@ -187,6 +187,8 @@ df = database.load_data()
 
 # Create a list of unique entities
 entidades = df['nom_ent'].unique().to_list()
+#Ordenar alfabéticamente
+entidades=entidades.sort()
 
 # Info básica
 database.show_data_info(df)
