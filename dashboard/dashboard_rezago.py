@@ -212,9 +212,11 @@ filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 
 # Sort the DataFrame and select top 10 rows
 filtered_rezago = filtered_rezago.sort('ind_rez',descending=True)
+#Transformar a pandas
+filtered_rezago=filtered_rezago.to_pandas()
 
 
-fig = px.bar( filtered_rezago.sort('ind_rez',descending=True),
+fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
                 x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
                 
                 color_continuous_scale="YlOrRd")
