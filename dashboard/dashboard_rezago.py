@@ -195,8 +195,7 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
 
-# Load data
-df=database.load_data()
+
 
 
 # Create a list of unique entities
