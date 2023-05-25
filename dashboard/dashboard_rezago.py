@@ -217,7 +217,7 @@ filtered_rezago=filtered_rezago.to_pandas()
 
 
 fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
-                x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
+                x='ind_rez', y='mza', orientation='h',color='ind_rez',
                 
                 color_continuous_scale="YlOrRd")
 
