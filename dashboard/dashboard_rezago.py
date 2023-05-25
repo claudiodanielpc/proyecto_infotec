@@ -211,7 +211,8 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2017.png?raw=true", width=300)
-
+st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2020.png?raw=true", width=300)
+st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2021.png?raw=true", width=300)
 # url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
 # response = requests.get(url)
 # html_content = response.content.decode("utf-8")
