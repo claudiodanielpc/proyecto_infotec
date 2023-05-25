@@ -208,8 +208,7 @@ entidades = df['nom_ent'].unique().to_list()
 selected_entity = st.selectbox('Selecciona una entidad', entidades)
 
 # # Filter the DataFrame for the selected entity
-filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
-
+filtered_rezago = df.filter(df['nom_ent'] == selected_entity).reset_index()
 #Histograma con plotly
 fig = px.histogram(filtered_rezago, x='ind_rez', nbins=10, color_discrete_sequence=['#F63366'])
 fig.update_layout(
