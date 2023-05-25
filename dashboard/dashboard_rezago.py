@@ -207,14 +207,17 @@ database.hist_plotly(df)
 
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales descargadas de Google Earth Engine fueron conjuntadas, normalizadas y convertidas a arreglos de numpy. Al final del Jupyter Notebook se puede apreciar lo realizado.</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales que se proponen utilizar son las correspondientes al estado de Aguascalientes. Estas ya están libres de nubes por lo que están listas para utilizarse.</p>", unsafe_allow_html=True)
 
-url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
-response = requests.get(url)
-html_content = response.content.decode("utf-8")
 
-with st.expander("Mostrar Jupyter Notebook con procesamiento de imágenes", expanded=False):
-    st.components.v1.html(html_content, height=600, width=900, scrolling=True)
+st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2017.png", width=300)
+
+# url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/U3_B_Claudio_Pacheco.ipynb"
+# response = requests.get(url)
+# html_content = response.content.decode("utf-8")
+
+# with st.expander("Mostrar Jupyter Notebook con procesamiento de imágenes", expanded=False):
+#     st.components.v1.html(html_content, height=600, width=900, scrolling=True)
 
 
 
