@@ -255,7 +255,7 @@ fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
 #         )
 #     ]
 # )
-# st.plotly_chart(fig)
+st.plotly_chart(fig)
 
 
 
