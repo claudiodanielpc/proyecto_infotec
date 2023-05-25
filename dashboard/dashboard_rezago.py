@@ -211,7 +211,7 @@ selected_entity = st.selectbox('Selecciona una entidad', entidades)
 filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 
 # Sort the DataFrame and select top 10 rows
-filtered_rezago = filtered_rezago.sort("ind_rez", reverse=True).slice(0, 10)
+filtered_rezago = filtered_rezago.sort('ind_rez',descending=True)
 
 
 fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
