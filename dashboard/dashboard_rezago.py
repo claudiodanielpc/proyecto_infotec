@@ -204,7 +204,9 @@ df=database.load_data()
 
 
 # Create a list of unique entities
-entidades = df['nom_ent'].unique().tolist()
+entidades = df['nom_ent'].unique()
+#transformar a lista
+entidades=entidades.tolist()
 
 # Create a dropdown selector for the entities
 selected_entity = st.selectbox('Select an entity', entidades)
