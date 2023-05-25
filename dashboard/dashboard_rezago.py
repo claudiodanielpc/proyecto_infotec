@@ -228,17 +228,17 @@ fig.update_layout(
         dtick=10
     ))
 # #Mostrar todos los valores en el eje y
-# fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['cvegeo'], 'ticktext': filtered_rezago['cvegeo']})
-# fig.update_layout(
-#     xaxis_title='índice de rezago habitacional',
-#     yaxis_title='Manzana',
-#     font_family='Montserrat',
-#      yaxis=dict(
-#         tickmode='array',
-#         tickvals=filtered_rezago['cvegeo'],
-#         ticktext=filtered_rezago['cvegeo'],
-#         dtick=1
-#      ),
+fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['cvegeo'], 'ticktext': filtered_rezago['cvegeo']})
+fig.update_layout(
+    xaxis_title='índice de rezago habitacional',
+    yaxis_title='Manzana',
+    font_family='Montserrat',
+    #  yaxis=dict(
+    #     tickmode='array',
+    #     tickvals=filtered_rezago['cvegeo'],
+    #     ticktext=filtered_rezago['cvegeo'],
+    #     dtick=1
+     
     annotations=[
         go.layout.Annotation(
             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
