@@ -222,7 +222,7 @@ database.hist_plotly(df)
 
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
-st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales que se proponen utilizar son las correspondientes al estado de Aguascalientes. Estas ya están libres de nubes por lo que están listas para utilizarse.</p>", unsafe_allow_html=True)
+st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales que se proponen utilizar son las correspondientes al estado de Aguascalientes de 2017 a 202 las cuales fueron generadas mediante la aplicación de la geomediana.</p>", unsafe_allow_html=True)
 
 
 st.image("https://github.com/claudiodanielpc/proyecto_infotec/blob/main/img/ags_2017.png?raw=true", width=300, caption="Imagen satelital de Aguascalientes en 2017")
