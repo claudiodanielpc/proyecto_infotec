@@ -8,7 +8,7 @@ def load_data():
     Load cleaned data from remote CSV file and return as Pandas DataFrame
     """
     #url = "https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv"
-    df = pl.read_csv('https://gitlab.com/claudiodanielpc/infotec/-/raw/main/final.csv')
+    df = pl.read_csv('https://gitlab.com/claudiodanielpc/infotec/-/raw/main/final1.csv')
     #df = pl.read_csv("https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv")
     return df
 
