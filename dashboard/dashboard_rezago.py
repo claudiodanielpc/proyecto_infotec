@@ -173,6 +173,14 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 
 st.markdown("---")
 
+url="https://nbviewer.org/github/claudiodanielpc/proyecto_infotec/blob/main/indice_rezago.ipynb"
+response = requests.get(url)
+html_content = response.content.decode("utf-8")
+
+with st.expander("Mostrar Jupyter Notebook para conocer cómo se construyó el proxy del rezago habitacional", expanded=False):
+    st.components.v1.html(html_content, height=600, width=900, scrolling=True)
+st.markdown("---")
+
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Estructura de la base limpia: </p>", unsafe_allow_html=True)
 # Cargar datos
 df = database.load_data()
