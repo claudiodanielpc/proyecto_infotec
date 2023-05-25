@@ -50,3 +50,103 @@ print((enigh%>%
   summarise(viviendas=survey_prop(vartype="cv"))%>%
   filter(rezago=="En rezago")%>%
   ungroup()),n=32)
+
+
+
+
+
+
+
+#Crear matriz de correlación por entidad
+pisos<-enigh%>%
+  #Diseño muestral
+  as_survey(weights=factor, strata=est_dis, ids=upm)%>%
+    mutate(
+         pisos=case_when(mat_pisos %in% c(1) ~ 1,
+                         TRUE ~ 0))%>%
+  #Filtrar pisos igual a 1
+  filter(pisos==1)%>%
+
+group_by(entidad)%>%
+  summarise(pisos=survey_prop())%>%
+  #ungroup()%>%
+  #Eliminar las variables que terminen en "_se"
+  select(-ends_with("_se"))
+
+paredes<-enigh%>%
+  #Diseño muestral
+  as_survey(weights=factor, strata=est_dis, ids=upm)%>%
+    mutate(
+         paredes=case_when(mat_pared %in% c(1,2,3,4,5,6) ~ 1,
+                         TRUE ~ 0))%>%
+  #Filtrar pisos igual a 1
+  filter(paredes==1)%>%
+  group_by(entidad)%>%
+  summarise(paredes=survey_prop())%>%
+  ungroup()%>%
+  #Eliminar las variables que terminen en "_se"
+  select(-ends_with("_se"))
+
+#techos
+techos<-enigh%>%
+  #Diseño muestral
+  as_survey(weights=factor, strata=est_dis, ids=upm)%>%
+    mutate(
+         techos=case_when(mat_techos %in% c(1,2,3,4,6,7,9) ~ 1,
+                         TRUE ~ 0))%>%
+  #Filtrar pisos igual a 1
+  filter(techos==1)%>%
+  group_by(entidad)%>%
+  summarise(techos=survey_prop())%>%
+  ungroup()%>%
+  #Eliminar las variables que terminen en "_se"
+  select(-ends_with("_se"))
+
+#excusado
+excusado<-enigh%>%
+  #Diseño muestral
+  as_survey(weights=factor, strata=est_dis, ids=upm)%>%
+    mutate(
+         excusado=case_when(excusado==2 ~ 1,
+                            TRUE ~ 0))%>%
+  #Filtrar pisos igual a 1
+  filter(excusado==1)%>%
+  group_by(entidad)%>%
+  summarise(excusado=survey_prop())%>%
+  ungroup()%>%
+  #Eliminar las variables que terminen en "_se"
+  select(-ends_with("_se"))
+
+#hacinamiento
+hacinamiento<-enigh%>%
+  #Diseño muestral
+  as_survey(weights=factor, strata=est_dis, ids=upm)%>%
+    mutate(
+         hacinamiento=case_when((tot_resid/num_cuarto)>2.5 ~ 1,
+                                TRUE ~ 0))%>%
+  #Filtrar pisos igual a 1
+  filter(hacinamiento==1)%>%
+  group_by(entidad)%>%
+  summarise(hacinamiento=survey_prop())%>%
+  ungroup()%>%
+  #Eliminar las variables que terminen en "_se"
+  select(-ends_with("_se"))
+
+
+
+#Pegar pisos y paredes
+indicadores<-left_join(pisos,paredes,by="entidad")%>%
+  #Pegar techos
+  left_join(techos,by="entidad")%>%
+  #Pegar excusado
+  left_join(excusado,by="entidad")%>%
+  #Pegar hacinamiento
+  left_join(hacinamiento,by="entidad")
+
+#Crear matriz de correlación por entidad
+matcor<-cor(indicadores%>%
+              select(-entidad),use="pairwise.complete.obs")
+
+  
+matcor
+
