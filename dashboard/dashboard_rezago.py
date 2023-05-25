@@ -199,88 +199,8 @@ st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: just
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/final1.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
 st.markdown("---")  
-
+st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Índice de rezago habitacional</p>", unsafe_allow_html=True)
 database.hist_plotly(df)
-
-# # Create a dropdown selector for the entities
-# selected_entity = st.selectbox('Selecciona una entidad', entidades)
-
-# # # Filter the DataFrame for the selected entity
-# filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
-
-# #Histograma con plotly
-# fig = px.histogram(filtered_rezago, x=filtered_rezago['ind_rez'], nbins=10, color_discrete_sequence=['#F63366'])
-# fig.update_layout(
-#     xaxis_title='Índice de rezago habitacional',
-#     yaxis_title='Número de manzanas',
-#     font_family='Montserrat',
-#     annotations=[
-#         go.layout.Annotation(
-#             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
-#             xref='paper',
-#             yref='paper',
-#             x=0,
-#             y=-0.2,
-#             showarrow=False,
-#             font=dict(
-#                 family='Montserrat',
-#                 size=12,
-#                 color='grey'
-#             )
-#         )
-#     ]
-# )
-# st.plotly_chart(fig)
-
-
-# # Sort the DataFrame and select top 10 rows
-# filtered_rezago = filtered_rezago.sort('ind_rez',descending=True)
-# #Transformar a pandas
-# filtered_rezago=filtered_rezago.to_pandas()
-
-
-# fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
-#                 x='ind_rez', y='mza', orientation='h',color='ind_rez',
-                
-#                 color_continuous_scale="YlOrRd")
-
-# fig.update_layout(
-#     coloraxis_colorbar=dict(
-#         title="índice de rezago habitacional",
-        
-#         dtick=1
-#     ))
-# # Eje x con valores de 0 a 1 
-# fig.update_layout(xaxis_range=[0, 1])
-# # #Mostrar todos los valores en el eje y
-# fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['mza'], 'ticktext': filtered_rezago['mza']})
-# fig.update_layout(
-#     xaxis_title='índice de rezago habitacional',
-#     yaxis_title='Manzana',
-#     font_family='Montserrat',
-#     #  yaxis=dict(
-#     #     tickmode='array',
-#     #     tickvals=filtered_rezago['cvegeo'],
-#     #     ticktext=filtered_rezago['cvegeo'],
-#     #     dtick=1
-     
-#     annotations=[
-#         go.layout.Annotation(
-#             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
-#             xref='paper',
-#             yref='paper',
-#             x=0,
-#             y=-0.2,
-#             showarrow=False,
-#             font=dict(
-#                 family='Montserrat',
-#                 size=12,
-#                 color='grey'
-#             )
-#         )
-#     ]
-# )
-# st.plotly_chart(fig)
 
 
 

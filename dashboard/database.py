@@ -52,14 +52,14 @@ def hist_plotly(df):
     #generar una subtabla con la entidad seleccionada
     filtro=df.filter(df['nom_ent'] == nom_ent)
     st.markdown(f"<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Histograma del índice de rezago habitacional de {nom_ent}</p>", unsafe_allow_html=True)
-    fig = px.histogram(filtro, x=filtro["ind_rez"], nbins=10, color_discrete_sequence=['#F63366'])
+    fig = px.histogram(filtro, x=filtro["ind_rez"], nbins=10, color_discrete_sequence=['#9d2449'])
     fig.update_layout(
     xaxis_title='Índice de rezago habitacional',
     yaxis_title='Número de manzanas',
     font_family='Montserrat',
     annotations=[
         go.layout.Annotation(
-            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            text='Fuente: Elaboración propia con información de INEGI. Censo de Población y Vivienda 2020',
             xref='paper',
             yref='paper',
             x=0,
@@ -74,24 +74,3 @@ def hist_plotly(df):
     ]
 )
     st.plotly_chart(fig)
-
-#     fig.update_layout(
-#     xaxis_title='Índice de rezago habitacional',
-#     yaxis_title='Número de manzanas',
-#     font_family='Montserrat',
-#     annotations=[
-#         go.layout.Annotation(
-#             text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
-#             xref='paper',
-#             yref='paper',
-#             x=0,
-#             y=-0.2,
-#             showarrow=False,
-#             font=dict(
-#                 family='Montserrat',
-#                 size=12,
-#                 color='grey'
-#             )
-#         )
-#     ]
-# )
