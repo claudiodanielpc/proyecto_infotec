@@ -217,7 +217,7 @@ filtered_rezago=filtered_rezago.to_pandas()
 
 
 fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
-                x='ind_rez', y='cvegeo', orientation='h',color='ind_rez',
+                x='ind_rez', y='nom_mun', orientation='h',color='ind_rez',
                 
                 color_continuous_scale="YlOrRd")
 
@@ -228,7 +228,7 @@ fig.update_layout(
         dtick=10
     ))
 # #Mostrar todos los valores en el eje y
-fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['cvegeo'], 'ticktext': filtered_rezago['cvegeo']})
+fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['nom_mun'], 'ticktext': filtered_rezago['nom_mun']})
 fig.update_layout(
     xaxis_title='índice de rezago habitacional',
     yaxis_title='Manzana',
