@@ -214,7 +214,7 @@ filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 filtered_rezago = filtered_rezago.sort('ind_rez',descending=True)
 
 
-fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
+fig = px.bar( filtered_rezago.sort('ind_rez',descending=True),
                 x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
                 
                 color_continuous_scale="YlOrRd")
