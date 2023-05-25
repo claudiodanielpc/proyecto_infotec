@@ -210,8 +210,9 @@ selected_entity = st.selectbox('Selecciona una entidad', entidades)
 # # Filter the DataFrame for the selected entity
 filtered_rezago = df.filter(df['nom_ent'] == selected_entity)
 
-# # Select the top 10 municipalities based on 'rezago_vivienda'
-filtered_rezago = filtered_rezago.sort_values('ind_rez', ascending=False).head(10)
+# Sort the DataFrame and select top 10 rows
+filtered_rezago = filtered_rezago.sort("ind_rez", reverse=True).slice(0, 10)
+
 
 fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
                 x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
