@@ -194,17 +194,13 @@ database.show_variable_stats(df)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer la base de datos completa, puedes descargarla en formato CSV en el siguiente enlace: </p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
-import pandas as pd
-import streamlit as st
-import plotly.express as px
-import plotly.graph_objects as go
 
 # Load data
 df=database.load_data()
 
 
 # Create a list of unique entities
-entidades = df['nom_ent'].unique()
+entidades = df['nom_ent'].unique().to_list()
 
 
 # Create a dropdown selector for the entities
