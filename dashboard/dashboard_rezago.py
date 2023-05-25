@@ -194,6 +194,71 @@ database.show_variable_stats(df)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Si quieres conocer la base de datos completa, puedes descargarla en formato CSV en el siguiente enlace: </p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'><a href='https://gitlab.com/claudiodanielpc/infotec/-/raw/main/df_limpia.csv'>Liga al archivo CSV</a></p>", unsafe_allow_html=True)
 
+import pandas as pd
+import streamlit as st
+import plotly.express as px
+import plotly.graph_objects as go
+
+# Load data
+df=database.load_data()
+
+
+# Create a list of unique entities
+entidades = df['nom_ent'].unique().tolist()
+
+# Create a dropdown selector for the entities
+selected_entity = st.selectbox('Select an entity', entidades)
+
+# Filter the DataFrame for the selected entity
+filtered_rezago = df[df['nom_ent'] == selected_entity]
+
+# Select the top 10 municipalities based on 'rezago_vivienda'
+filtered_rezago = filtered_rezago.sort_values('ind_rez', ascending=False).head(10)
+
+fig = px.bar(filtered_rezago.sort_values('ind_rez', ascending=True),
+                x='ind_rez', y='mza', orientation='h',color='rezago_vivienda',
+                
+                color_continuous_scale="YlOrRd")
+
+fig.update_layout(
+    coloraxis_colorbar=dict(
+        title="índice de rezago habitacional",
+        
+        dtick=10
+    ))
+#Mostrar todos los valores en el eje y
+fig.update_layout(yaxis={'tickmode': 'array', 'tickvals': filtered_rezago['mza'], 'ticktext': filtered_rezago['mza']})
+fig.update_layout(
+    xaxis_title='índice de rezago habitacional',
+    yaxis_title='Manzana',
+    font_family='Montserrat',
+     yaxis=dict(
+        tickmode='array',
+        tickvals=filtered_rezago['mza'],
+        ticktext=filtered_rezago['mza'],
+        dtick=1
+     ),
+    annotations=[
+        go.layout.Annotation(
+            text='Fuente: INEGI. Encuesta Nacional de Ingresos y Gastos de los Hogares (ENIGH) 2020',
+            xref='paper',
+            yref='paper',
+            x=0,
+            y=-0.2,
+            showarrow=False,
+            font=dict(
+                family='Montserrat',
+                size=12,
+                color='grey'
+            )
+        )
+    ]
+)
+st.plotly_chart(fig)
+
+
+
+
 st.markdown("---")
 st.markdown("<p style='font-family: Montserrat; font-weight: bold;font-size: 20px; text-align: center'>Sobre las imágenes</p>", unsafe_allow_html=True)
 st.markdown("<p style='font-family: Montserrat;font-size: 15px; text-align: justified'>Las imágenes satelitales descargadas de Google Earth Engine fueron conjuntadas, normalizadas y convertidas a arreglos de numpy. Al final del Jupyter Notebook se puede apreciar lo realizado.</p>", unsafe_allow_html=True)
