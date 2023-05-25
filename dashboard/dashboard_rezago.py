@@ -94,14 +94,26 @@ if option== 'Fuentes de información':
     f"</div>",
     unsafe_allow_html=True)
 #Google Earth Engine
+    # st.sidebar.write(" ")
+    # url="https://earthengine.google.com/static/images/GoogleEarthEngine_Grey_108.png"
+    # caption="Google Earth Engine"
+    # st.sidebar.markdown(
+    # f"<div style='text-align:center; font-family:montserrat;'>"
+    # f"<img src='{url}' alt='{caption}' width='70'/>"
+    # #Añadir url para redirigir a la página del INEGI
+    # f"<p><a href='https://earthengine.google.com/'>Google Earth Engine</a></p>"
+    # f"</div>",
+    # unsafe_allow_html=True)
+
+    #OpenAire
     st.sidebar.write(" ")
-    url="https://earthengine.google.com/static/images/GoogleEarthEngine_Grey_108.png"
-    caption="Google Earth Engine"
+    url="https://openscience.eu/sites/default/files/styles/wide/public/2%2C%20Brigitte%20Braun/Infrastructure/OpenAire_Logo_1200x600px.jpg?itok=5JGW4nxk"
+    caption="AgsSAT Multiannual (2017-2021) Sentinel-2 Geomedian Composites"
     st.sidebar.markdown(
     f"<div style='text-align:center; font-family:montserrat;'>"
     f"<img src='{url}' alt='{caption}' width='70'/>"
     #Añadir url para redirigir a la página del INEGI
-    f"<p><a href='https://earthengine.google.com/'>Google Earth Engine</a></p>"
+    f"<p><a href='https://zenodo.org/record/6908357#.ZGzU8naZO3A'>AgsSAT Multiannual (2017-2021) Sentinel-2 Geomedian Composites</a></p>"
     f"</div>",
     unsafe_allow_html=True)
 
