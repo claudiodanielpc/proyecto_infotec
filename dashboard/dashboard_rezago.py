@@ -208,7 +208,7 @@ entidades = df['nom_ent'].unique().to_list()
 selected_entity = st.selectbox('Selecciona una entidad', entidades)
 
 # # Filter the DataFrame for the selected entity
-filtered_rezago = df[df['nom_ent'] == selected_entity]
+filtered_rezago = df.filter(df['entidad'] == selected_entity)
 
 # # Select the top 10 municipalities based on 'rezago_vivienda'
 filtered_rezago = filtered_rezago.sort_values('ind_rez', ascending=False).head(10)
